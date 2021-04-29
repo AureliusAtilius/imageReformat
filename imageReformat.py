@@ -1,14 +1,17 @@
 #! bin/env/python3 
-import os, PIL
+import os, sys
+from PIL import Image
 from pathlib import Path
 
-#TODO: Move through each file in a folder
 
-#TODO: Open Image
+# Move through each file in a folder named in the first command line argument
+for file in Path(sys.argv[1]).glob("*.tiff"):
 
-#TODO: Rotate image 
-
-#TODO: Resize image 
-
-#TODO: Save image as .jpg
-
+# Open Image
+        im = Image(file)
+# Rotate image 
+        im.Rotate(90)
+# Resize image 
+        im.Resize((128,128))
+# Save image as .jpg
+        im.Save(Path('/opt/icons/')/Path(file), format='.jpg')
